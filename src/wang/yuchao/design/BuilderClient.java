@@ -14,26 +14,30 @@ public class BuilderClient {
         Product getResult();
     }
 
-    public interface Product {
+    public class Product {
     }
 
     //具体建造者
     public class ConcreteBuilder implements Builder {
         @Override
         public void buildPartA() {
+            System.out.println("建造A部分");
         }
 
         @Override
         public void buildPartB() {
+            System.out.println("建造B部分");
         }
 
         @Override
         public void buildPartC() {
+            System.out.println("建造C部分");
         }
 
         @Override
         public Product getResult() {
-            return null;
+            System.out.println("建造完成");
+            return new Product();
         }
     }
 
@@ -52,7 +56,7 @@ public class BuilderClient {
         }
     }
 
-    public void client() {
+    public void test() {
         ConcreteBuilder builder = new ConcreteBuilder();
         Director director = new Director(builder);
         director.buildAll();
@@ -60,6 +64,6 @@ public class BuilderClient {
     }
 
     public static void main(String[] args) {
-        ...
+        new BuilderClient().test();
     }
 }
